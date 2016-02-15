@@ -23,6 +23,7 @@
     <script src="js/resultsFactory.js"></script>
     <script src="js/authenticationFactory.js"></script>
     <script src="js/registrationController.js"></script>
+    <script src="js/mpDbFactory.js"></script>
     <script src="js/successController.js"></script>
     <link rel="stylesheet" href="css/style.css">
 
@@ -43,13 +44,10 @@
       <span class="userinfo">Hi {{ currentUser.firstname }}</span>
       <a ng-href="#/login" ng-click="logout()">logout</a>
     </div>
-
+    
     <div class="main" ng-view>
 
     </div>
-    <div>
- <a class="twitter-timeline" href="https://twitter.com/rickygervais" data-widget-id="698120503601586176" data-screen-name="rickygervais">Tweets by @rickygervais</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  </div>
 
   </body>
-</html>
+  </html>

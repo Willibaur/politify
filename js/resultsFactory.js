@@ -49,6 +49,10 @@ politify.factory('ResultsFactory', [function() {
     return mpResults.constituency.replace(/\s+/g, '');
   };
 
+  factory.mpTwitterHandle = function(mpDetails){
+    return mpDetails.twitterhandle.replace(/@/, '').toLowerCase();
+  };
+
 
   return factory;
 }]);

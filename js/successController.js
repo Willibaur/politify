@@ -1,4 +1,4 @@
-politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSearch', 'Votes', 'ResultsFactory', function ($scope, $http, MpSearch, NewsSearch, Votes, ResultsFactory) {
+politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSearch', 'Votes', 'ResultsFactory','mpDbFactory', function ($scope, $http, MpSearch, NewsSearch, Votes, ResultsFactory, mpDbFactory) {
   var self = this;
   self.postcode = self.postcode || '';
   self.validate = false;
@@ -7,18 +7,19 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
     $scope.error = false;
 
 
-  self.doSearch = function() {
-    if(self.postcode !== '') {
-      MpSearch.query(self.postcode)
-      .then(function(response) {
-        self.mpResults = response.data;
-        console.log(response);
-        // finds mp details based on constituency
+    self.doSearch = function() {
+      if(self.postcode !== '') {
+        MpSearch.query(self.postcode)
+        .then(function(response) {
+          self.mpResults = response.data;
+          console.log(response);
+          // finds mp details based on constituency
 
-        // NewsSearch.query(self.mpResults.full_name)
-        // .then(function(response) {
-        //   self.newsResults = response.data;
-        //   console.log(response);
+          NewsSearch.query(self.mpResults.full_name)
+          .then(function(response) {
+            self.newsResults = response.data;
+            console.log(response);
+          });
           // finds news about mp based on name
 
           Votes.query(self.mpResults.person_id)
@@ -28,10 +29,16 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
             self.validate = true;
             // finds voting information based on mps id
           });
-        // });
-      });
+          mpDbFactory.query(self.mpResults.given_name, self.mpResults.family_name)
+          .then(function(result) {
+            console.log(result);
+            self.mpDetails = result;
+            self.showResults();
+            // finds the MPs contact information in the FirebaseDb
+          });
+        });
+      }
     };
-  };
 
   self.showResults = function() {
     self.mpName = ResultsFactory.mpName(self.mpResults);
@@ -46,7 +53,7 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
     self.mp_id = ResultsFactory.mp_id(self.mpResults);
     self.mp_link_name = ResultsFactory.mp_link_name(self.mpResults);
     self.mpConstituency = ResultsFactory.mpConstituency(self.mpResults);
-
+    self.mpTwitterHandle = ResultsFactory.mpTwitterHandle(self.mpDetails);
   };
 
   $scope.sendMessage = function( input ) {
@@ -64,7 +71,6 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
         $scope.error = true;
       }
     } );
-  }
-
+  };
 
 }]);
