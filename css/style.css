@@ -674,3 +674,9 @@ input.ng-valid.ng-touched {
   padding: 2px;
   display: inline;
  }
+
+ .regmemitem {
+   font-family: Lato, 'Helvetica Nueue', Helvetica, Arial, sans-serif;
+   margin-top: 10px;
+   margin-bottom: 10px;
+ }

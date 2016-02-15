@@ -15,10 +15,10 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
         console.log(response);
         // finds mp details based on constituency
 
-        NewsSearch.query(self.mpResults.full_name)
-        .then(function(response) {
-          self.newsResults = response.data;
-          console.log(response);
+        // NewsSearch.query(self.mpResults.full_name)
+        // .then(function(response) {
+        //   self.newsResults = response.data;
+        //   console.log(response);
           // finds news about mp based on name
 
           Votes.query(self.mpResults.person_id)
@@ -28,7 +28,7 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
             self.validate = true;
             // finds voting information based on mps id
           });
-        });
+        // });
       });
     };
   };
