@@ -7,6 +7,7 @@ politify.controller('SuccessController',
   var self = this;
   self.postcode = self.postcode || '';
   self.validate = false;
+  self.issue = '';
 
     $scope.success = false;
     $scope.error = false;
@@ -52,6 +53,7 @@ politify.controller('SuccessController',
               }).then(function (el) {
                 console.log("Twitter timeline added");
               });
+              // adds in the Twitter widget
             });
           });
         }
@@ -88,6 +90,23 @@ politify.controller('SuccessController',
         $scope.error = true;
       }
     } );
+  };
+
+  self.addIssue = function() {
+    var ref = new Firebase("https://politify.firebaseio.com/MPs/"+self.mpResults.given_name + self.mpResults.family_name);
+    var postsRef = ref.child("petitions");
+    var newPostRef = postsRef.push();
+    console.log(self.issue);
+    newPostRef.set({
+      issue: self.issue,
+      score: 0
+    });
+    self.issue = '';
+    mpDbFactory.query(self.mpResults.given_name, self.mpResults.family_name)
+    .then(function(result) {
+      console.log(result);
+      self.mpDetails = result;
+    });
   };
 
 }]);
