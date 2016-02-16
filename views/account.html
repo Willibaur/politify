@@ -24,7 +24,7 @@
     <button class="btn btn-delete tooltip" ng-click="deletePostcode(key)">
       <span>Delete</span>
     </button>
-    <a ng-href="#/success" class="text">{{ postcode.name | uppercase }}</a>
+    <a ng-href="#/success" ng-click="storeContents()" class="text">{{ postcode.name | uppercase }}</a>
   </div>
 <br><br>
 <h2>Your account details</h2>
