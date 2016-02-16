@@ -2,6 +2,7 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
   var self = this;
   self.postcode = self.postcode || '';
   self.validate = false;
+  self.issue = '';
 
     $scope.success = false;
     $scope.error = false;
@@ -90,12 +91,16 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
     var ref = new Firebase("https://politify.firebaseio.com/MPs/"+self.mpResults.given_name + self.mpResults.family_name);
     var postsRef = ref.child("petitions");
     var newPostRef = postsRef.push();
+    console.log(self.issue);
     newPostRef.set({
-      issue: "local tramps are chasing the cats"
+      issue: self.issue
     });
-
-    var petitionsList = new Firebase("https://politify.firebaseio.com/MPs/"+ self.mpResults.given_name + self.mpResults.family_name);
-
+    self.issue = '';
+    mpDbFactory.query(self.mpResults.given_name, self.mpResults.family_name)
+    .then(function(result) {
+      console.log(result);
+      self.mpDetails = result;
+    });
   };
 
 

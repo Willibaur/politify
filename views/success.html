@@ -110,6 +110,11 @@
     <div ng-repeat="petition in successCtrl.mpDetails.petitions">
       <p>{{petition.issue}}</p>
     </div>
+    <form>
+      Issues:<br>
+      <input ng-model="successCtrl.issue" type="text" name="issues">
+      <button ng-click="successCtrl.addPetition()">Make Petition</button>
+    </form>
   </div>
 </section>
 
