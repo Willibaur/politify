@@ -5,7 +5,7 @@ var politify = angular.module('Politify',
 politify.filter("sanitize", ['$sce', function($sce) {
   return function(htmlCode){
     return $sce.trustAsHtml(htmlCode);
-  }
+  };
 }]);
 
 politify.run(['$rootScope', '$location',
@@ -29,6 +29,11 @@ politify.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/register.html',
       controller: 'RegistrationController'
     }).
+    when('/account', {
+      templateUrl: 'views/account.html',
+      controller: 'MeetingsController'
+    }).
+
     when('/success', {
       templateUrl: 'views/success.html',
       controller: 'SuccessController',

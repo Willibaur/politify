@@ -7,8 +7,10 @@
     <form class="form-horizontal">
       <input type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase">
       <button class="btn" ng-click="successCtrl.doSearch()">Search</button>
-      <!-- <button class="btn" ng-click="successCtrl.clearSearch()">Search again</button> -->
     </form>
+
+
+
   </div>
   <br><br>
   <div class="all-results" ng-show="successCtrl.validate && successCtrl.postcode">
@@ -38,9 +40,9 @@
       <p data-ng-bind="successCtrl.mpResults.party"></p>
       <p id="constituency" data-ng-bind="successCtrl.mpResults.constituency"></p>
       <p data-ng-bind="successCtrl.mpResults.office[0].dept"></p>
-      <p><img ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available"></img></p>
+      <p><img ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available" height="200px" width="200px"></img></p>
       <p><a class="web-link" ng-href="{{ successCtrl.votes.mp_website }}">Website</a></p>
-      <p><a class="web-link" ng-href="http://www.theyworkforyou.com/mp/{{successCtrl.mpResults.person_id}}/{{successCtrl.mpName}}/{{successCtrl.mpConstituency}}/votes">See how {{successCtrl.mpResults.full_name}} votes</a></p>
+      <p><a class="web-link" ng-href="http://www.theyworkforyou.com/mp/{{successCtrl.mpResults.person_id}}/{{successCtrl.mp_link_name}}/{{successCtrl.mpConstituency}}/votes">See how {{successCtrl.mpResults.full_name}} votes</a></p>
 
   </div>
 
