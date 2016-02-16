@@ -14,11 +14,11 @@ describe('factory: NewsSearch', function() {
     );
   }));
 
-  xit('responds to query', function(){
+  it('responds to query', function(){
     expect(newsSearch.query).toBeDefined();
   });
 
-  xit('returns search results', function () {
+  it('returns search results', function () {
     newsSearch.query()
       .then(function (response) {
         expect(response.data.title).toEqual
