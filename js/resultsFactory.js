@@ -21,8 +21,8 @@ politify.factory('ResultsFactory', [function() {
     return mpResults.image;
   };
 
-  factory.website = function(votes) {
-    return votes.mp_website;
+  factory.website = function(mpDetails) {
+    return mpDetails.personalwebsite;
   };
 
   factory.expenses = function(votes) {

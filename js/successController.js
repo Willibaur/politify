@@ -10,21 +10,21 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
     self.doSearch = function() {
       if(self.postcode !== '') {
         MpSearch.query(self.postcode)
-        .then(function(response) {
-          self.mpResults = response.data;
+        .success(function(response) {
+          self.mpResults = response;
           console.log(response);
           // finds mp details based on constituency
 
           NewsSearch.query(self.mpResults.full_name)
-          .then(function(response) {
+          .success(function(response) {
             self.newsResults = response.data;
             console.log(response);
           });
-          // finds news about mp based on name
+          // // finds news about mp based on name
 
           Votes.query(self.mpResults.person_id)
-          .then(function(response){
-            self.votes = response.data;
+          .success(function(response){
+            self.votes = response;
             console.log(response);
             self.validate = true;
             // finds voting information based on mps id
@@ -57,10 +57,10 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
     self.constituency = ResultsFactory.constituency(self.mpResults);
     self.dept = ResultsFactory.dept(self.mpResults);
     self.image = ResultsFactory.image(self.mpResults);
-    self.website = ResultsFactory.website(self.votes);
-    self.expenses = ResultsFactory.expenses(self.votes);
-    self.ex_rank = ResultsFactory.ex_rank(self.votes);
-    self.ex_rank_total = ResultsFactory.ex_rank_total(self.votes);
+    self.website = ResultsFactory.website(self.mpDetails);
+    // self.expenses = ResultsFactory.expenses(self.votes);
+    // self.ex_rank = ResultsFactory.ex_rank(self.votes);
+    // self.ex_rank_total = ResultsFactory.ex_rank_total(self.votes);
     self.mp_id = ResultsFactory.mp_id(self.mpResults);
     self.mp_link_name = ResultsFactory.mp_link_name(self.mpResults);
     self.mpConstituency = ResultsFactory.mpConstituency(self.mpResults);
