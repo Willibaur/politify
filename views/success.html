@@ -100,9 +100,10 @@
   </div>
   <br>
   <div ng-show="tab.isSet(6)">
-    <button id="testbtn" ng-click"successCtrl.updateTwitter()">TEST</button>
     <h2>Social</h2>
-    <p>Why not follow @<span data-ng-bind="successCtrl.mpTwitterHandle"></span>?</p>
+    <p ng-show="successCtrl.mpTwitterHandle">Why not follow @<span data-ng-bind="successCtrl.mpTwitterHandle"></span>?</p>
+    <br>
+    <p ng-hide="successCtrl.mpTwitterHandle">This MP isn't on twitter</p>
     <br>
     <div id="timeline">
     </div>
