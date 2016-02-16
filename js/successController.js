@@ -1,9 +1,9 @@
 politify.controller('SuccessController',
                     ['$scope', '$http', 'MpSearch',
                       'NewsSearch', 'Votes', 'ResultsFactory',
-                      'mpDbFactory',
+                      'mpDbFactory','Issues',
                       function ($scope, $http, MpSearch, NewsSearch, Votes,
-                                ResultsFactory, mpDbFactory) {
+                                ResultsFactory, mpDbFactory, Issues) {
   var self = this;
   self.postcode = self.postcode || '';
   self.validate = false;
@@ -40,24 +40,11 @@ politify.controller('SuccessController',
             console.log(result);
             self.mpDetails = result;
             self.showResults();
-            // finds the MPs contact information in the FirebaseDb
-            document.getElementById('timeline').innerHTML = "";
-            twttr.widgets.createTimeline(
-              '698120503601586176',
-              document.getElementById('timeline'),
-              {
-                width: '100%',
-                height: '700',
-                related: 'twitterdev,twitterapi',
-                screenName: self.mpTwitterHandle
-              }).then(function (el) {
-                console.log("Twitter timeline added");
-              });
-              // adds in the Twitter widget
-            });
+            self.addTwitterWidget();
           });
-        }
-      };
+        });
+      }
+    };
 
   self.showResults = function() {
     self.mpName = ResultsFactory.mpName(self.mpResults);
@@ -93,19 +80,31 @@ politify.controller('SuccessController',
   };
 
   self.addIssue = function() {
-    var ref = new Firebase("https://politify.firebaseio.com/MPs/"+self.mpResults.given_name + self.mpResults.family_name);
-    var postsRef = ref.child("petitions");
-    var newPostRef = postsRef.push();
-    console.log(self.issue);
-    newPostRef.set({
-      issue: self.issue,
-      score: 0
-    });
+    Issues.addIssue(self.mpResults.given_name, self.mpResults.family_name, self.issue);
     self.issue = '';
+    self.makeDbCall();
+  };
+
+  self.makeDbCall = function() {
     mpDbFactory.query(self.mpResults.given_name, self.mpResults.family_name)
     .then(function(result) {
       console.log(result);
       self.mpDetails = result;
+    });
+  };
+
+  self.addTwitterWidget = function() {
+    document.getElementById('timeline').innerHTML = "";
+    twttr.widgets.createTimeline(
+      '698120503601586176',
+      document.getElementById('timeline'),
+      {
+        width: '100%',
+        height: '700',
+        related: 'twitterdev,twitterapi',
+        screenName: self.mpTwitterHandle
+      }).then(function (el) {
+        console.log("Twitter timeline added");
     });
   };
 
