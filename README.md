@@ -1,4 +1,7 @@
-# Politify
+# Politify     
+[![Build Status](https://travis-ci.org/Willibaur/politify.svg?branch=master)](https://travis-ci.org/Willibaur/politify)
+
+
 ### Usage
 
 ```sh
