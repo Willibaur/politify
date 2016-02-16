@@ -35,6 +35,7 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
             self.mpDetails = result;
             self.showResults();
             // finds the MPs contact information in the FirebaseDb
+            document.getElementById('timeline').innerHTML = "";
             twttr.widgets.createTimeline(
               '698120503601586176',
               document.getElementById('timeline'),
@@ -58,9 +59,9 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
     self.dept = ResultsFactory.dept(self.mpResults);
     self.image = ResultsFactory.image(self.mpResults);
     self.website = ResultsFactory.website(self.mpDetails);
-    // self.expenses = ResultsFactory.expenses(self.votes);
-    // self.ex_rank = ResultsFactory.ex_rank(self.votes);
-    // self.ex_rank_total = ResultsFactory.ex_rank_total(self.votes);
+    self.expenses = ResultsFactory.expenses(self.votes);
+    self.ex_rank = ResultsFactory.ex_rank(self.votes);
+    self.ex_rank_total = ResultsFactory.ex_rank_total(self.votes);
     self.mp_id = ResultsFactory.mp_id(self.mpResults);
     self.mp_link_name = ResultsFactory.mp_link_name(self.mpResults);
     self.mpConstituency = ResultsFactory.mpConstituency(self.mpResults);
