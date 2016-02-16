@@ -28,6 +28,8 @@
       <a class="btn-tab" href ng-click="tab.setTab(5)">Finacial Info</a></li>
     <li ng-class="{ active: tab.isSet(6) }">
       <a class="btn-tab" href ng-click="tab.setTab(6)">Social</a></li>
+    <li ng-class="{ active: tab.isSet(7) }">
+      <a class="btn-tab" href ng-click="tab.setTab(7)">Issues</a></li>
   </ul>
   <br>
 
@@ -52,10 +54,7 @@
     <p ng-model="successCtrl">{{ successCtrl.votes.expenses2009_total | currency:"£" }}</p>
   </div>
   <div ng-show="tab.isSet(3)">
-    <h2>Raised Issies</h2>
-    <div ng-repeat="petition in successCtrl.mpDetails.petitions">
-      <p>{{petition.issue}}
-    </div>
+
     <h2>Email</h2>
     <p ng-model="succesCtrl">Email {{ successCtrl.mpResults.full_name }}</p>
     <form method="post" name="form" role="form" ng-model="successCtrl" ng-submit="form.$valid && sendMessage(input)" novalidate>
@@ -104,6 +103,12 @@
     <p>Why not follow @<span data-ng-bind="successCtrl.mpTwitterHandle"></span>?</p>
     <br>
     <div id="timeline">
+    </div>
+  </div>
+  <div ng-show="tab.isSet(7)">
+    <h2>Raised Issues</h2>
+    <div ng-repeat="petition in successCtrl.mpDetails.petitions">
+      <p>{{petition.issue}}</p>
     </div>
   </div>
 </section>
