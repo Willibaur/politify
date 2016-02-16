@@ -21,6 +21,9 @@
 
   <h2>Your saved postcodes</h2>
   <div class="meeting" ng-repeat="(key, postcode) in postcodes">
+    <button class="btn btn-delete tooltip" ng-click="deletePostcode(key)">
+      <span>Delete</span>
+    </button>
     <a ng-href="#/success" class="text">{{ postcode.name | uppercase }}</a>
   </div>
 <br><br>

@@ -20,6 +20,10 @@ politify.controller('MeetingsController',
             $scope.postcode='';
           }); //promise
         }; // addMeeting
+
+        $scope.deletePostcode = function(key) {
+          postcodeInfo.$remove(key);
+        };
       } // User Authenticated
     }); // on Auth
 }]); //Controller
