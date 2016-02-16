@@ -35,10 +35,21 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
             self.mpDetails = result;
             self.showResults();
             // finds the MPs contact information in the FirebaseDb
+            twttr.widgets.createTimeline(
+              '698120503601586176',
+              document.getElementById('timeline'),
+              {
+                width: '100%',
+                height: '700',
+                related: 'twitterdev,twitterapi',
+                screenName: self.mpTwitterHandle
+              }).then(function (el) {
+                console.log("Twitter timeline added");
+              });
+            });
           });
-        });
-      }
-    };
+        }
+      };
 
   self.showResults = function() {
     self.mpName = ResultsFactory.mpName(self.mpResults);

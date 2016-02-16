@@ -96,11 +96,11 @@
   </div>
   <br>
   <div ng-show="tab.isSet(6)">
-    <button ng-click"successCtrl.loadTwitter()">TEST</button>
-    <h4>Social</h4>
-    <p>Twitter Handle: @<span data-ng-bind="successCtrl.mpTwitterHandle"></span></p>
-    <div>
-      <a class="twitter-timeline" href="https://twitter.com/{{successCtrl.mpTwitterHandle}}" data-widget-id="698120503601586176" data-screen-name="{{successCtrl.mpTwitterHandle}}">Tweets by @{{successCtrl.mpTwitterHandle}}</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <button id="testbtn" ng-click"successCtrl.updateTwitter()">TEST</button>
+    <h2>Social</h2>
+    <p>Why not follow @<span data-ng-bind="successCtrl.mpTwitterHandle"></span>?</p>
+    <br>
+    <div id="timeline">
     </div>
   </div>
 </section>
