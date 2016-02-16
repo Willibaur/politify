@@ -5,7 +5,7 @@ var politify = angular.module('Politify',
 politify.filter("sanitize", ['$sce', function($sce) {
   return function(htmlCode){
     return $sce.trustAsHtml(htmlCode);
-  }
+  };
 }]);
 
 politify.run(['$rootScope', '$location',
