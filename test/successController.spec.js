@@ -7,7 +7,7 @@ describe('SuccessController', function() {
     ctrl = $controller('SuccessController');
   }));
 
-  xit('initialises with an empty search result and term', function() {
-    expect(ctrl.postcode).toBe('');
+  it('initialises with an empty search result and term', function() {
+    expect(ctrl.postcode).toBe();
   });
 });

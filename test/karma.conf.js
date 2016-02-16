@@ -20,7 +20,9 @@ module.exports = function(config) {
             'bower_components/angular-resource/angular-resource.js',
             'bower_components/angular-mocks/angular-mocks.js',
             'js/**/*.js',
-            'test/**/*.spec.js'
+            'test/**/*.spec.js',
+            "bower_components/firebase/firebase.js",
+            "bower_components/dist/angularfire/angularfire.min.js"
     ],
 
 
