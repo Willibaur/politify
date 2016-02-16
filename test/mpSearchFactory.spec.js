@@ -14,11 +14,11 @@ describe('factory: MpSearch', function() {
     );
   }));
 
-  xit('responds to query', function(){
+  it('responds to query', function(){
     expect(mpSearch.query).toBeDefined();
   });
 
-  xit('returns search results', function () {
+  it('returns search results', function () {
     mpSearch.query()
       .then(function (response) {
         expect(response.data.full_name).toEqual

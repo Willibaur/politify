@@ -8,6 +8,6 @@ describe('SuccessController', function() {
   }));
 
   it('initialises with an empty search result and term', function() {
-    expect(ctrl.postcode).toBe();
+    expect(ctrl.postcode).toBeUndefined();
   });
 });

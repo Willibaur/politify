@@ -1,4 +1,9 @@
-politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSearch', 'Votes', 'ResultsFactory','mpDbFactory', function ($scope, $http, MpSearch, NewsSearch, Votes, ResultsFactory, mpDbFactory) {
+politify.controller('SuccessController',
+                    ['$scope', '$http', 'MpSearch',
+                      'NewsSearch', 'Votes', 'ResultsFactory',
+                      'mpDbFactory',
+                      function ($scope, $http, MpSearch, NewsSearch, Votes,
+                                ResultsFactory, mpDbFactory) {
   var self = this;
   self.postcode = self.postcode || '';
   self.validate = false;

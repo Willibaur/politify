@@ -19,10 +19,10 @@ module.exports = function(config) {
             'bower_components/angular-route/angular-route.js',
             'bower_components/angular-resource/angular-resource.js',
             'bower_components/angular-mocks/angular-mocks.js',
+            'bower_components/firebase/firebase.js',
+            'bower_components/angularfire/dist/angularfire.min.js',
             'js/**/*.js',
-            'test/**/*.spec.js',
-            "bower_components/firebase/firebase.js",
-            "bower_components/dist/angularfire/angularfire.min.js"
+            'test/**/*.spec.js'
     ],
 
 
@@ -67,7 +67,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
+    singleRun: false,
 
     // Concurrency level
     // how many browser should be started simultaneous
