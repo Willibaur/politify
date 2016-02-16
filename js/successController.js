@@ -87,13 +87,14 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
     } );
   };
 
-  self.addPetition = function() {
+  self.addIssue = function() {
     var ref = new Firebase("https://politify.firebaseio.com/MPs/"+self.mpResults.given_name + self.mpResults.family_name);
     var postsRef = ref.child("petitions");
     var newPostRef = postsRef.push();
     console.log(self.issue);
     newPostRef.set({
-      issue: self.issue
+      issue: self.issue,
+      score: 0
     });
     self.issue = '';
     mpDbFactory.query(self.mpResults.given_name, self.mpResults.family_name)
@@ -102,7 +103,5 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
       self.mpDetails = result;
     });
   };
-
-
 
 }]);

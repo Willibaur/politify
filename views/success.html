@@ -111,9 +111,8 @@
       <p>{{petition.issue}}</p>
     </div>
     <form>
-      Issues:<br>
-      <input ng-model="successCtrl.issue" type="text" name="issues">
-      <button ng-click="successCtrl.addPetition()">Make Petition</button>
+      <textarea ng-model="successCtrl.issue" type="text" name="issues">
+      <button ng-click="successCtrl.addIssue()">Raise issue</button>
     </form>
   </div>
 </section>
