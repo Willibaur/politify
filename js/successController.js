@@ -47,6 +47,7 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
               }).then(function (el) {
                 console.log("Twitter timeline added");
               });
+              // adds in the Twitter widget
             });
           });
         }
@@ -84,5 +85,19 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
       }
     } );
   };
+
+  self.addPetition = function() {
+    var ref = new Firebase("https://politify.firebaseio.com/MPs/"+self.mpResults.given_name + self.mpResults.family_name);
+    var postsRef = ref.child("petitions");
+    var newPostRef = postsRef.push();
+    newPostRef.set({
+      issue: "local tramps are chasing the cats"
+    });
+
+    var petitionsList = new Firebase("https://politify.firebaseio.com/MPs/"+ self.mpResults.given_name + self.mpResults.family_name);
+
+  };
+
+
 
 }]);

@@ -52,6 +52,10 @@
     <p ng-model="successCtrl">{{ successCtrl.votes.expenses2009_total | currency:"£" }}</p>
   </div>
   <div ng-show="tab.isSet(3)">
+    <h2>Raised Issies</h2>
+    <div ng-repeat="petition in successCtrl.mpDetails.petitions">
+      <p>{{petition.issue}}
+    </div>
     <h2>Email</h2>
     <p ng-model="succesCtrl">Email {{ successCtrl.mpResults.full_name }}</p>
     <form method="post" name="form" role="form" ng-model="successCtrl" ng-submit="form.$valid && sendMessage(input)" novalidate>
@@ -86,7 +90,7 @@
     </ul>
   </div>
   <div ng-show="tab.isSet(5)">
-    <h2>Finacial Info</h2>
+    <h2>Financial Info</h2>
     <br>
     <div ng-model="successCtrl">
     <p> {{ successCtrl.mpResults.full_name }}'s finacial interests</p>
