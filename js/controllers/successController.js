@@ -103,8 +103,10 @@ politify.controller('SuccessController',
     //   date: Firebase.ServerValue.TIMESTAMP
     // };
     comments.$add({
-      name:myGift,
+      name: myGift,
+      author: $rootScope.currentUser
     });
+
   };
 
   self.makeDbCall = function() {

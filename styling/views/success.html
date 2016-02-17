@@ -128,8 +128,9 @@
           <button type="submit" class="btn-small">+</button>
         </form>
         <div ng-repeat="key in petition.comments">
-          {{key.name}}
+          {{key.author.firstname}}:&nbsp{{key.name}}
         </div>
+        <br><br>
       </div> <!-- comment form closes -->
 
     </div>
