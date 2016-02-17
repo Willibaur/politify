@@ -9,9 +9,8 @@ politify.controller('SuccessController',
   self.validate = false;
   self.issue = '';
 
-    $scope.success = false;
-    $scope.error = false;
-
+   $scope.success = false;
+   $scope.error = false;
 
     self.doSearch = function() {
       if(self.postcode !== '') {
@@ -62,22 +61,22 @@ politify.controller('SuccessController',
     self.mpTwitterHandle = ResultsFactory.mpTwitterHandle(self.mpDetails);
   };
 
-  $scope.sendMessage = function( input ) {
-    input.submit = true;
-    $http({
-        method: 'POST',
-        url: 'processForm.php',
-        data: angular.element.param(input),
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    })
-    .success( function(data) {
-      if ( data.success ) {
-        $scope.success = true;
-      } else {
-        $scope.error = true;
-      }
-    } );
-  };
+ $scope.sendMessage = function( input ) {
+   input.submit = true;
+   $http({
+       method: 'POST',
+       url: 'processForm.php',
+       data: angular.element.param(input),
+       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+   })
+   .success( function(data) {
+     if ( data.success ) {
+       $scope.success = true;
+     } else {
+       $scope.error = true;
+     }
+   } );
+ };
 
   self.addIssue = function() {
     Issues.addIssue(self.mpResults.given_name, self.mpResults.family_name, self.issue);
