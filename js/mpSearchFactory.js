@@ -4,8 +4,8 @@ politify.factory('MpSearch', ['$http', function($http) {
   return {
 
     query: function(postcode) {
-      return $http.get(
-        queryUrl + postcode + key + "&output=js"
+      return $http.jsonp(
+        queryUrl + postcode + key + "&output=js" + "&callback=JSON_CALLBACK"
       );
     }
   };

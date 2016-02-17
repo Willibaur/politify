@@ -30,6 +30,8 @@
       <a class="btn-tab" href ng-click="tab.setTab(5)">Finacial Info</a></li>
     <li ng-class="{ active: tab.isSet(6) }">
       <a class="btn-tab" href ng-click="tab.setTab(6)">Social</a></li>
+    <li ng-class="{ active: tab.isSet(7) }">
+      <a class="btn-tab" href ng-click="tab.setTab(7)">Issues</a></li>
   </ul>
   <br>
 
@@ -56,6 +58,7 @@
     <p>{{ successCtrl.votes.expenses2009_total | currency:"£" }}</p>
   </div>
   <div ng-show="tab.isSet(3)">
+
     <h2>Email</h2>
     <p>Email {{ successCtrl.mpResults.full_name }}</p>
     <form method="post" name="form" role="form" ng-model="successCtrl" ng-submit="form.$valid && sendMessage(input)" novalidate>
@@ -90,7 +93,7 @@
     </ul>
   </div>
   <div ng-show="tab.isSet(5)">
-    <h2>Finacial Info</h2>
+    <h2>Financial Info</h2>
     <br>
     <div ng-model="successCtrl">
     <p> {{ successCtrl.mpResults.full_name }}'s finacial interests</p>
@@ -107,6 +110,16 @@
     <br>
     <div id="timeline">
     </div>
+  </div>
+  <div ng-show="tab.isSet(7)">
+    <h2>Raised Issues</h2>
+    <div ng-repeat="petition in successCtrl.mpDetails.petitions">
+      <p>{{petition.issue}}</p>
+    </div>
+    <form>
+      <textarea ng-model="successCtrl.issue" type="text" name="issues">
+      <button ng-click="successCtrl.addIssue()">Raise issue</button>
+    </form>
   </div>
 </section>
 

@@ -1,11 +1,14 @@
-politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSearch', 'Votes', 'ResultsFactory','mpDbFactory', function ($scope, $http, MpSearch, NewsSearch, Votes, ResultsFactory, mpDbFactory) {
- var self = this;
- self.postcode = self.postcode || '';
- self.validate = false;
 
-   $scope.success = false;
-   $scope.error = false;
-
+politify.controller('SuccessController',
+                    ['$scope', '$http', 'MpSearch',
+                      'NewsSearch', 'Votes', 'ResultsFactory',
+                      'mpDbFactory',
+                      function ($scope, $http, MpSearch, NewsSearch, Votes,
+                                ResultsFactory, mpDbFactory) {
+  var self = this;
+  self.postcode = self.postcode || '';
+  self.validate = false;
+  self.issue = '';
 
    self.doSearch = function() {
      if(self.postcode !== '') {
@@ -68,6 +71,7 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
    self.mpTwitterHandle = ResultsFactory.mpTwitterHandle(self.mpDetails);
  };
 
+
  $scope.sendMessage = function( input ) {
    input.submit = true;
    $http({
@@ -84,5 +88,22 @@ politify.controller('SuccessController', ['$scope', '$http', 'MpSearch', 'NewsSe
      }
    } );
  };
+
+  self.addIssue = function() {
+    var ref = new Firebase("https://politify.firebaseio.com/MPs/"+self.mpResults.given_name + self.mpResults.family_name);
+    var postsRef = ref.child("petitions");
+    var newPostRef = postsRef.push();
+    console.log(self.issue);
+    newPostRef.set({
+      issue: self.issue,
+      score: 0
+    });
+    self.issue = '';
+    mpDbFactory.query(self.mpResults.given_name, self.mpResults.family_name)
+    .then(function(result) {
+      console.log(result);
+      self.mpDetails = result;
+    });
+  };
 
 }]);

@@ -5,8 +5,8 @@ politify.factory('Votes', ['$http', function($http) {
   return {
 
     query: function(id) {
-      return $http.get(
-        queryUrl + id + "&output=js" + key
+      return $http.jsonp(
+        queryUrl + id + "&output=js" + key + "&callback=JSON_CALLBACK"
       );
     }
   };
