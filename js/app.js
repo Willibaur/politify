@@ -22,15 +22,15 @@ politify.run(['$rootScope', '$location',
 politify.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
     when('/login', {
-      templateUrl: 'views/login.html',
+      templateUrl: 'styling/views/login.html',
       controller: 'RegistrationController'
     }).
     when('/register', {
-      templateUrl: 'views/register.html',
+      templateUrl: 'styling/views/register.html',
       controller: 'RegistrationController'
     }).
     when('/success', {
-      templateUrl: 'views/success.html',
+      templateUrl: 'styling/views/success.html',
       controller: 'SuccessController',
       resolve: {
         currentAuth: function(Authentication) {
