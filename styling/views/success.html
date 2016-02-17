@@ -7,8 +7,10 @@
     <form class="form-horizontal">
       <input type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase">
       <button class="btn" ng-click="successCtrl.doSearch()">Search</button>
-      <!-- <button class="btn" ng-click="successCtrl.clearSearch()">Search again</button> -->
     </form>
+
+
+
   </div>
   <br><br>
   <div class="all-results" ng-show="successCtrl.validate && successCtrl.postcode">
@@ -36,13 +38,15 @@
   <div ng-show="tab.isSet(1)">
     <h2>Basic Info</h2>
     <br>
-      <p data-ng-bind="successCtrl.mpResults.full_name"></p>
-      <p data-ng-bind="successCtrl.mpResults.party"></p>
-      <p id="constituency" data-ng-bind="successCtrl.mpResults.constituency"></p>
-      <p data-ng-bind="successCtrl.mpResults.office[0].dept"></p>
-      <p><img ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available"></img></p>
-      <p><a class="web-link" ng-href="{{ successCtrl.votes.mp_website }}">Website</a></p>
-      <p><a class="web-link" ng-href="http://www.theyworkforyou.com/mp/{{successCtrl.mpResults.person_id}}/{{successCtrl.mpName}}/{{successCtrl.mpConstituency}}/votes">See how {{successCtrl.mpResults.full_name}} votes</a></p>
+    <div class="info">
+      <p>Name: {{successCtrl.mpResults.full_name}}</p>
+      <p>Party: {{successCtrl.mpResults.party}}</p>
+      <p id="constituency">Constituency: {{successCtrl.mpResults.constituency}}</p>
+      <p>{{successCtrl.mpResults.office[0].dept}}</p>
+      </div>
+      <p><img ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available" height="100px" width="100px"></img></p>
+      <p><a target="_blank" class="web-link" ng-href="{{ successCtrl.votes.mp_website }}">Website</a></p>
+      <p><a target="_blank" class="web-link" ng-href="http://www.theyworkforyou.com/mp/{{successCtrl.mpResults.person_id}}/{{successCtrl.mp_link_name}}/{{successCtrl.mpConstituency}}/votes">See how {{successCtrl.mpResults.full_name}} votes</a></p>
 
   </div>
 
@@ -51,12 +55,12 @@
     <br>
     <a class="web-link" ng-href="{{ successCtrl.votes.expenses_url }}">Expenses Record</a>
     <p>Total expenses:</p>
-    <p ng-model="successCtrl">{{ successCtrl.votes.expenses2009_total | currency:"£" }}</p>
+    <p>{{ successCtrl.votes.expenses2009_total | currency:"£" }}</p>
   </div>
   <div ng-show="tab.isSet(3)">
 
     <h2>Email</h2>
-    <p ng-model="succesCtrl">Email {{ successCtrl.mpResults.full_name }}</p>
+    <p>Email {{ successCtrl.mpResults.full_name }}</p>
     <form method="post" name="form" role="form" ng-model="successCtrl" ng-submit="form.$valid && sendMessage(input)" novalidate>
       <p ng-show="success">Thanks for getting in touch!</p>
       <p ng-show="error">Something wrong happened!, please try again.</p>
@@ -76,7 +80,7 @@
         </div>
 
       </fieldset>
-      <button type="submit" name="submit" value="submit">Submit</button>
+      <button class="btn" type="submit" name="submit" value="submit">Send</button>
     </form>
   </div>
   <div ng-show="tab.isSet(4)">
@@ -100,7 +104,9 @@
   <br>
   <div ng-show="tab.isSet(6)">
     <h2>Social</h2>
-    <p>Why not follow @<span data-ng-bind="successCtrl.mpTwitterHandle"></span>?</p>
+    <p ng-show="successCtrl.mpTwitterHandle">Why not follow @<span data-ng-bind="successCtrl.mpTwitterHandle"></span>?</p>
+    <br>
+    <p ng-hide="successCtrl.mpTwitterHandle">This MP isn't on twitter</p>
     <br>
     <div id="timeline">
     </div>

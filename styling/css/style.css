@@ -264,13 +264,6 @@ input[type=radio] {
 .btn-email { background-image: url(../images/icons/icon_email.png); }
 .btn-meeting { background-image:  url(../images/icons/icon_meeting.png); }
 
-.btn-pick {
-  background: #2D8BCF url(../images/icons/icon_dice.png) 5px center no-repeat;
-  background-size: 20px 20px;
-  padding: 5px 5px 5px 30px;
-  font-size: .8em;
-  margin: 0 auto;
-}
 
 .btn-reset {
   background: #CB4B19 url(../images/icons/icon_reset.png)  5px center no-repeat;
@@ -679,4 +672,9 @@ input.ng-valid.ng-touched {
    font-family: Lato, 'Helvetica Nueue', Helvetica, Arial, sans-serif;
    margin-top: 10px;
    margin-bottom: 10px;
+ }
+
+ .info {
+   text-align: justify;
+   padding-left: 42%;
  }

@@ -15,8 +15,11 @@
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
     <!-- Main App -->
     <script src="js/app.js"></script>
+
+
     <!-- Controllers -->
     <script src="js/layout/tabController.js"></script>
+    <script src="js/userProfileController.js"></script>
     <script src="js/controllers/successController.js"></script>
     <script src="js/controllers/registrationController.js"></script>
     <!-- Services -->
@@ -27,16 +30,29 @@
     <script src="js/services/authenticationFactory.js"></script>
     <script src="js/services/mpDbFactory.js"></script>
     <script src="js/services/issuesFactory.js"></script>
+    <script src="js/userProfileController.js"></script>
+
+
 
     <!-- CSS -->
     <link rel="stylesheet" href="styling/css/style.css">
+
     <!-- twitter -->
     <script src="http://platform.twitter.com/widgets.js"></script>
+
   </head>
 
   <body ng-controller="SuccessController as successCtrl">
     <header>
-      <nav class="cf" ng-include="styling/views/nav.html"></nav>
+      <nav class="cf">
+        <div class="branding"><a ng-href="#/">Politify</a></div>
+      <ul>
+        <li><a ng-hide="currentUser" ng-href="#/login">Login</a></li>
+        <li><a ng-hide="currentUser" ng-href="#/register">Register</a></li>
+        <li><a ng-show="currentUser"ng-href="#/account">My Account</a></li>
+        <li><a ng-show="currentUser"ng-href="#/success">Search</a></li>
+      </ul>
+    </nav>
     </header>
 
     <div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
