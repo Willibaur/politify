@@ -96,13 +96,15 @@ politify.controller('SuccessController',
   };
 
   $scope.giveLove = function(myCheckin, myGift) {
-    var refCom = new Firebase("https://politify.firebaseio.com/MPs/KateHoey/petitions/-KAegZ3jo6ZbEW3Q9BWF/issue" + '/comments');
+    var refCom = new Firebase("https://politify.firebaseio.com/MPs/KateHoey/petitions/-KAejC_L4BNJI5hprnYH" + '/comments');
     var comments = $firebaseArray(refCom);
-    var myData = {
-      name: myGift,
-      date: Firebase.ServerValue.TIMESTAMP
-    };
-    comments.$add(myData);
+    // var myData = {
+    //   name: myGift,
+    //   date: Firebase.ServerValue.TIMESTAMP
+    // };
+    comments.$add({
+      name:myGift,
+    });
   };
 
   self.makeDbCall = function() {
