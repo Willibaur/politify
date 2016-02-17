@@ -1,9 +1,9 @@
 politify.controller('SuccessController',
                     ['$scope', '$http', 'MpSearch',
                       'NewsSearch', 'Votes', 'ResultsFactory',
-                      'mpDbFactory','Issues',
+                      'mpDbFactory', 'Issues','$rootScope', '$firebaseAuth', '$firebaseArray',
                       function ($scope, $http, MpSearch, NewsSearch, Votes,
-                                ResultsFactory, mpDbFactory, Issues) {
+                                ResultsFactory, mpDbFactory, Issues, $rootScope, $firebaseAuth, $firebaseArray) {
   var self = this;
   self.postcode = self.postcode || '';
   self.validate = false;
@@ -82,6 +82,27 @@ politify.controller('SuccessController',
     Issues.addIssue(self.mpResults.given_name, self.mpResults.family_name, self.issue);
     self.issue = '';
     self.makeDbCall();
+  };
+
+  $scope.showLove = function(myCheckin) {
+    myCheckin.show = !myCheckin.show;
+
+    if (myCheckin.userState == 'expanded') {
+      myCheckin.userState = '';
+
+    } else {
+      myCheckin.userState = 'expanded';
+    }
+  };
+
+  $scope.giveLove = function(myCheckin, myGift) {
+    var refCom = new Firebase("https://politify.firebaseio.com/MPs/KateHoey/petitions/-KAegZ3jo6ZbEW3Q9BWF/issue" + '/comments');
+    var comments = $firebaseArray(refCom);
+    var myData = {
+      name: myGift,
+      date: Firebase.ServerValue.TIMESTAMP
+    };
+    comments.$add(myData);
   };
 
   self.makeDbCall = function() {

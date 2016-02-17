@@ -113,8 +113,15 @@
   </div>
   <div ng-show="tab.isSet(7)">
     <h2>Raised Issues</h2>
-    <div ng-repeat="petition in successCtrl.mpDetails.petitions">
+    <div ng-class="checkin.userState" ng-repeat="petition in successCtrl.mpDetails.petitions">
       <p>{{petition.issue}}</p>
+      <button class="btn btn-love tooltip" ng-click="showLove(petition)"><span>Comment</span></button>
+      <div class="showcheckins" ng-show="petition.show">
+        <form class="cf" ng-submit="giveLove(petition, checkin.giftText)" novalidate>
+          <input type="text" name="giftText" placeholder="What you saying" ng-model="checkin.giftText">
+          <button type="submit" class="btn">+</button>
+        </form>
+      </div>
     </div>
     <form>
       <textarea ng-model="successCtrl.issue" type="text" name="issues"></textarea>
