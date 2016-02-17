@@ -29,6 +29,11 @@ politify.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/register.html',
       controller: 'RegistrationController'
     }).
+    when('/account', {
+      templateUrl: 'views/account.html',
+      controller: 'MeetingsController'
+    }).
+
     when('/success', {
       templateUrl: 'views/success.html',
       controller: 'SuccessController',
