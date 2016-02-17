@@ -114,6 +114,10 @@
   <div ng-show="tab.isSet(7)">
     <h2>Raised Issues</h2>
 
+    <div ng-repeat="comm in successCtrl.mpDetails.petitions">
+
+    </div>
+
     <div ng-class="checkin.userState" ng-repeat="petition in successCtrl.mpDetails.petitions">
       <p>{{petition.issue}}</p>
       <button class="btn btn-love tooltip" ng-click="showLove(petition)"><span>Comment</span></button>
@@ -123,9 +127,8 @@
           <input type="text" name="giftText" placeholder="What you saying" ng-model="checkin.giftText">
           <button type="submit" class="btn-small">+</button>
         </form>
-
-        <div ng-repeat="comment in comments">
-            <p>show{{comment.name}}</p>
+        <div ng-repeat="key in petition.comments">
+          {{key.name}}
         </div>
       </div> <!-- comment form closes -->
 
