@@ -53,13 +53,22 @@
         <li><a ng-hide="currentUser" ng-href="#/register">Register</a></li>
         <li><a ng-show="currentUser"ng-href="#/account">My Account</a></li>
         <li><a ng-show="currentUser"ng-href="#/success">Search</a></li>
+        <li><a ng-show="currentUser" ng-href="#/login" ng-click="logout()">Logout</a>
+        <li class="sbar">
+          <div ng-show="successCtrl.mpDetails">
+            <form class="sform" name="myform" novalidate>
+              <input class="sinput" type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase" ng-required="true">
+              <button class="btn-small" ng-disabled="myform.$invalid" ng-click="successCtrl.doSearch()">Search</button>
+            </form>
+          </div>
+        </li>
       </ul>
+
     </nav>
     </header>
 
     <div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
-      <span class="userinfo">Hi {{ currentUser.firstname }}</span>
-      <a ng-href="#/login" ng-click="logout()">logout</a>
+      <!-- <span class="userinfo">Hi {{ currentUser.firstname }}</span> -->
     </div>
 
     <div class="main" ng-view>
