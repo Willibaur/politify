@@ -136,9 +136,9 @@
 
     </div>
 
-    <form>
-      <textarea ng-model="successCtrl.issue" type="text" name="issues"></textarea>
-      <button ng-click="successCtrl.addIssue()">Raise issue</button>
+    <form name="myform">
+      <textarea ng-model="successCtrl.issue" type="text" name="issues" ng-required="true"></textarea>
+      <button ng-click="successCtrl.addIssue()" ng-disabled="myform.$invalid">Raise issue</button>
     </form>
   </div>
 </section>
