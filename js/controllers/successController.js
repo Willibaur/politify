@@ -20,11 +20,11 @@ politify.controller('SuccessController',
           console.log(response);
           // finds mp details based on constituency
 
-          NewsSearch.query(self.mpResults.full_name)
-          .success(function(response) {
-            self.newsResults = response.data;
-            console.log(response);
-          });
+          // NewsSearch.query(self.mpResults.full_name)
+          // .success(function(response) {
+          //   self.newsResults = response.data;
+          //   console.log(response);
+          // });
           // // finds news about mp based on name
 
           Votes.query(self.mpResults.person_id)
