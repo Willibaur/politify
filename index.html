@@ -53,16 +53,12 @@
         <li><a ng-hide="currentUser" ng-href="#/register">Register</a></li>
         <li><a ng-show="currentUser"ng-href="#/account">My Account</a></li>
         <li><a ng-show="currentUser"ng-href="#/success">Search</a></li>
-        <div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
-        <li><a ng-show="currentUser" ng-href="#/login" ng-click="logout()">Logout</a>
-        </div>
-        <li class="sbar">
-          <div ng-show="successCtrl.mpDetails">
-            <form class="sform" name="myform" novalidate>
-              <input class="sinput" type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase" ng-required="true">
+        <li><a ng-show="currentUser" ng-controller="RegistrationController" ng-href="#/login" ng-click="logout()">Logout</a>
+        <li ng-show="successCtrl.mpResults">
+          <form class="sform" name="myform" novalidate>
+              <input class="sinput" type="text" ng-model="successCtrl.postcode" ng-required="true" placeholder="Search">
               <button class="btn-small" ng-disabled="myform.$invalid" ng-click="successCtrl.doSearch()">Search</button>
-            </form>
-          </div>
+          </form>
         </li>
       </ul>
 

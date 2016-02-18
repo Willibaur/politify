@@ -552,8 +552,7 @@ nav li a:hover {
 
 .sbar {
   height: 100%;
-  margin-right: 39%;
-  text-align: center;
+  margin-right: 45%;
 
 }
 
@@ -721,3 +720,24 @@ input.ng-valid.ng-touched {
  .twitter {
    margin-left: 17%;
  }
+
+ .news {
+   white-space: pre-line;
+}
+
+.news_items  {
+  /*border-bottom: solid;
+  border-color: grey;*/
+  list-style:disc outside none;
+  display:list-item;
+}
+
+/*.finfo {
+  text-align: justify;
+  white-space: pre-line;
+  padding-left: 10px;
+}*/
+
+.rank {
+  white-space: nowrap;
+}

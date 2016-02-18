@@ -13,18 +13,18 @@ politify.controller('SuccessController',
    $scope.error = false;
 
     self.doSearch = function() {
-      if(self.postcode !== '') {
+
         MpSearch.query(self.postcode)
         .success(function(response) {
           self.mpResults = response;
           console.log(response);
-          //finds mp details based on constituency
-
-          // NewsSearch.query(self.mpResults.full_name)
-          // .success(function(response) {
-          //   self.newsResults = response;
-          //   console.log(response);
-          // });
+          // finds mp details based on constituency
+          //
+          NewsSearch.query(self.mpResults.full_name)
+          .success(function(response) {
+            self.newsResults = response;
+            console.log(response);
+          });
           // finds news about mp based on name
 
           Votes.query(self.mpResults.person_id)
@@ -40,10 +40,12 @@ politify.controller('SuccessController',
             self.mpDetails = result;
             self.showResults();
             self.addTwitterWidget();
+
           });
         });
-      }
+      self.postcode = '';
     };
+
 
   self.showResults = function() {
     self.mpName = ResultsFactory.mpName(self.mpResults);

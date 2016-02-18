@@ -1,150 +1,153 @@
 
 <div class="card">
   <fieldset>
-    <div ng-hide="successCtrl.mpDetails">
-  <h1 id="app-Name">Search For Your MP</h1
-    <p>Enter Postcode</p>
-  <div>
-    <form class="formgroup" name="myform" novalidate>
-      <input type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase" ng-required="true">
-      <br>
-      <button class="btn" ng-disabled="myform.$invalid" ng-click="successCtrl.doSearch()">Search</button>
-    </form>
-  </div>
-  </div>
-  <div class="all-results" ng-show="successCtrl.validate && successCtrl.postcode">
-    <div class="binfo">
-    <h2>Basic Info</h2>
-    <br>
-    <div class="info" >
-      <p>Name: {{successCtrl.mpResults.full_name}}</p>
-      <p>Party: {{successCtrl.mpResults.party}}</p>
-      <p id="constituency">Constituency: {{successCtrl.mpResults.constituency}}</p>
-      <p>{{successCtrl.mpResults.office[0].dept}}</p>
-      <p><a target="_blank" class="web-link" ng-href="{{ successCtrl.votes.mp_website }}">Website</a></p>
-      <p><a target="_blank" class="web-link" ng-href="http://www.theyworkforyou.com/mp/{{successCtrl.mpResults.person_id}}/{{successCtrl.mp_link_name}}/{{successCtrl.mpConstituency}}/votes">See how {{successCtrl.mpResults.full_name}} votes</a></p>
-    </div>
-      <p><img ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available" height="100px" width="100px"></img></p>
-    </div>
+    <div ng-hide="successCtrl.mpResults">
+      <h1 id="app-Name">Search For Your MP</h1
+        <p>Enter Postcode</p>
 
-    <br>
-
-  <section class="tab" ng-controller="TabController as tab">
-  <ul class="nav nav-pills">
-    <li ng-class="{ active: tab.isSet(1) }">
-      <a class="btn-tab" href ng-click="successCtrl.sendEmail(successCtrl.mpDetails.parliamentemail)">Email</a></li>
-    <li ng-class="{ active: tab.isSet(2) }">
-      <a class="btn-tab" href ng-click="tab.setTab(2)">News</a></li>
-    <li ng-class="{ active: tab.isSet(3) }">
-      <a class="btn-tab" href ng-click="tab.setTab(3)">Financial Info</a></li>
-    <li ng-class="{ active: tab.isSet(4) }">
-      <a class="btn-tab" href ng-click="tab.setTab(4)">Social</a></li>
-    <li ng-class="{ active: tab.isSet(5) }">
-      <a class="btn-tab" href ng-click="tab.setTab(5)">Issues</a></li>
-  </ul>
-  <br>
-
-
-  <div ng-show="tab.isSet(1)">
-    <h2>Email</h2>
-    <p>Email {{ successCtrl.mpResults.full_name }}</p>
-    <form method="post" name="form" role="form" ng-model="successCtrl" ng-submit="form.$valid && sendMessage(input)" novalidate>
-      <p ng-show="success">Thanks for getting in touch!</p>
-      <p ng-show="error">Something wrong happened!, please try again.</p>
-
-      <fieldset>
-        <div>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" ng-model="input.name" required>
-        </div>
-        <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" ng-model="input.email" required>
-        </div>
-        <div>
-          <label for="messsage">Message:</label>
-          <textarea id="messsage" name="message" ng-model="input.message" required></textarea>
-        </div>
-
-      </fieldset>
-      <button class="btn" type="submit" name="submit" value="submit">Send</button>
-    </form>
-  </div>
-  <div ng-show="tab.isSet(2)">
-    <h2>News</h2>
-    <br>
-    <ul class="news">
-      <p ng-repeat="links in successCtrl.newsResults.items">
-        <a ng-href="{{links.link}}">{{links.title}}</a>
-      </p>
-    </ul>
-  </div>
-  <div ng-show="tab.isSet(3)">
-    <h2>Financial Info</h2>
-    <br>
-    <div ng-model="successCtrl">
-    <p> {{ successCtrl.mpResults.full_name }}'s finacial interests</p>
-    <br>
-      <div ng-bind-html="successCtrl.votes.register_member_interests_html | sanitize"></div>
-      <br>
-      <h2>Expenses</h2>
-      <br>
-      <a class="web-link" ng-href="{{ successCtrl.votes.expenses_url }}">Expenses Record</a>
-      <p>Total expenses:</p>
-      <p>{{ successCtrl.votes.expenses2009_total | currency:"£" }}</p>
-    </div>
-  </div>
-  <br>
-  <div ng-show="tab.isSet(4)">
-    <h2>Social</h2>
-    <p ng-show="successCtrl.mpTwitterHandle">Why not follow @<span data-ng-bind="successCtrl.mpTwitterHandle"></span>?</p>
-    <br>
-    <p ng-hide="successCtrl.mpTwitterHandle">This MP isn't on twitter</p>
-    <br>
-    <div class="twitter" id="timeline">
-    </div>
-  </div>
-  <div ng-show="tab.isSet(5)">
-    <h2>Raised Issues</h2>
-    <br>
-    <div ng-repeat="comm in successCtrl.mpDetails.petitions">
-
-    </div>
-
-    <div ng-class="checkin.userState" ng-repeat="petition in successCtrl.mpDetails.petitions">
-      <p>{{petition.issue}}</p>
-      <button class="btn btn-list tooltip" ng-click="successCtrl.showLove(petition)"><span>Comments</span></button>
-      <button class="btn btn-love tooltip" ng-click="successCtrl.upvote()"><span>Like</span></button>
-      {{petition.score}}
-
-
-      <div class="showcheckins" ng-show="petition.show"> <!-- comment form -->
-        <form class="cf" ng-submit="giveLove(petition, checkin.giftText)" novalidate>
-          <input type="text" name="giftText" placeholder="What you saying" ng-model="checkin.giftText">
-          <button type="submit" class="btn-small">+</button>
+        <form class="formgroup" name="myform" novalidate>
+          <input type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase">
+          <br>
+          <button class="btn" ng-disabled="myform.$invalid" ng-click="successCtrl.doSearch()">Search</button>
         </form>
-        <div ng-repeat="key in petition.comments">
-          {{key.author.firstname}}:&nbsp{{key.name}}
+
+      </div>
+      <div class="all-results" ng-show="successCtrl.mpResults">
+        <div class="binfo">
+          <h2>{{successCtrl.mpDetails.title}}&nbsp;{{successCtrl.mpResults.full_name}}</h2>
+          <br>
+          <div class="info" >
+            <p>Party: {{successCtrl.mpResults.party}}</p>
+            <p id="constituency">Constituency: {{successCtrl.mpResults.constituency}}</p>
+            <p>{{successCtrl.mpResults.office[0].dept}}</p>
+            <p><a target="_blank" class="web-link" ng-href="{{ successCtrl.votes.mp_website }}">Website</a></p>
+            <p><a target="_blank" class="web-link" ng-href="http://www.theyworkforyou.com/mp/{{successCtrl.mpResults.person_id}}/{{successCtrl.mp_link_name}}/{{successCtrl.mpConstituency}}/votes">See how {{successCtrl.mpResults.full_name}} votes</a></p>
+          </div>
+          <p><img ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available" height="100px" width="100px"></img></p>
         </div>
-        <br><br>
-      </div> <!-- comment form closes -->
 
-    </div>
+        <br>
 
-    <br>
-    <h2>Raise an issue</h1>
+        <section class="tab" ng-controller="TabController as tab">
+          <ul class="nav nav-pills">
+            <li ng-class="{ active: tab.isSet(1) }">
+              <a class="btn-tab" href ng-click="successCtrl.sendEmail(successCtrl.mpDetails.parliamentemail)">Email</a></li>
+              <li ng-class="{ active: tab.isSet(2) }">
+                <a class="btn-tab" href ng-click="tab.setTab(2)">News</a></li>
+                <li ng-class="{ active: tab.isSet(3) }">
+                  <a class="btn-tab" href ng-click="tab.setTab(3)">Financial Info</a></li>
+                  <li ng-class="{ active: tab.isSet(4) }">
+                    <a class="btn-tab" href ng-click="tab.setTab(4)">Social</a></li>
+                    <li ng-class="{ active: tab.isSet(5) }">
+                      <a class="btn-tab" href ng-click="tab.setTab(5)">Issues</a></li>
+                    </ul>
+                    <br>
 
-    <form name="myform">
-      <textarea ng-model="successCtrl.issue" type="text" name="issues" ng-required="true"></textarea>
-      <button ng-click="successCtrl.addIssue()" ng-disabled="myform.$invalid">Raise issue</button>
 
-    </form>
-  </div>
-</section>
+                    <div ng-show="tab.isSet(1)">
+                      <h2>Email</h2>
+                      <p>Email {{ successCtrl.mpResults.full_name }}</p>
+                      <form method="post" name="form" role="form" ng-model="successCtrl" ng-submit="form.$valid && sendMessage(input)" novalidate>
+                        <p ng-show="success">Thanks for getting in touch!</p>
+                        <p ng-show="error">Something wrong happened!, please try again.</p>
+
+                        <fieldset>
+                          <div>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" ng-model="input.name" required>
+                          </div>
+                          <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" ng-model="input.email" required>
+                          </div>
+                          <div>
+                            <label for="messsage">Message:</label>
+                            <textarea id="messsage" name="message" ng-model="input.message" required></textarea>
+                          </div>
+
+                        </fieldset>
+                        <button class="btn" type="submit" name="submit" value="submit">Send</button>
+                      </form>
+                    </div>
+                    <div ng-show="tab.isSet(2)">
+                      <h2>News</h2>
+                      <ul class="news">
+                        <p ng-repeat="links in successCtrl.newsResults.items">
+                          <a ng-href="{{links.link}}">{{links.title}}</a>
+                        </p>
+                      </ul>
+                    </div>
+                    <div ng-show="tab.isSet(3)">
+                      <h2>Financial Info</h2>
+                      <div ng-model="successCtrl">
+                        <div class="finfo">
+                          <h2>Expenses</h2>
+
+                          <p class="rank">{{ successCtrl.mpResults.full_name }} ranks number {{ successCtrl.votes.expenses2009_total_rank }}
+                            out of {{ successCtrl.votes.expenses2009_total_rank_outof }} MP's in per anum expenses spending</p>
+
+                            <p>Total expenses for the year amount to:</p>
+                            <p>{{ successCtrl.votes.expenses2009_total | currency:"£" }}</p>
+                            <a class="web-link" ng-href="{{ successCtrl.votes.expenses_url }}">Expenses Record</a>
+                          </div>
+                            <br>
+                          <p> {{ successCtrl.mpResults.full_name }}'s finacial interests</p>
+                          <br>
+                          <div class="finfo" ng-bind-html="successCtrl.votes.register_member_interests_html | sanitize"></div>
+
+                        </div>
+                      </div>
+                      <br>
+                      <div ng-show="tab.isSet(4)">
+                        <h2>Social</h2>
+                        <p ng-show="successCtrl.mpTwitterHandle">Why not follow @<span data-ng-bind="successCtrl.mpTwitterHandle"></span>?</p>
+                        <br>
+                        <p ng-hide="successCtrl.mpTwitterHandle">This MP isn't on twitter</p>
+                        <br>
+                        <div class="twitter" id="timeline">
+                        </div>
+                      </div>
+                      <div ng-show="tab.isSet(5)">
+                        <h2>Raised Issues</h2>
+                        <br>
+                        <div ng-repeat="comm in successCtrl.mpDetails.petitions">
+
+                        </div>
+
+                        <div ng-class="checkin.userState" ng-repeat="petition in successCtrl.mpDetails.petitions">
+                          <p>{{petition.issue}}</p>
+                          <button class="btn btn-list tooltip" ng-click="successCtrl.showLove(petition)"><span>Comments</span></button>
+                          <button class="btn btn-love tooltip" ng-click="successCtrl.upvote()"><span>Like</span></button>
+                          {{petition.score}}
+
+
+                          <div class="showcheckins" ng-show="petition.show"> <!-- comment form -->
+                            <form class="cf" ng-submit="giveLove(petition, checkin.giftText)" novalidate>
+                              <input type="text" name="giftText" placeholder="What you saying" ng-model="checkin.giftText">
+                              <button type="submit" class="btn-small">+</button>
+                            </form>
+                            <div ng-repeat="key in petition.comments">
+                              {{key.author.firstname}}:&nbsp{{key.name}}
+                            </div>
+                            <br><br>
+                          </div> <!-- comment form closes -->
+
+                        </div>
+
+                        <br>
+                        <h2>Raise an issue</h1>
+
+                          <form name="myform">
+                            <textarea ng-model="successCtrl.issue" type="text" name="issues" ng-required="true"></textarea>
+                            <button ng-click="successCtrl.addIssue()" ng-disabled="myform.$invalid">Raise issue</button>
+
+                          </form>
+                        </div>
+                      </section>
 
 
 
-</div>
-  </div>
-</fieldset>
-</div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
