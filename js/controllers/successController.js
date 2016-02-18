@@ -100,7 +100,7 @@ politify.controller('SuccessController',
     var hash = ''; //needs to store the hash for the current issue
     //url = https://politify.firebaseio.com/MPs/ + mpname + '/' + hash
 
-    var refCom = new Firebase("https://politify.firebaseio.com/MPs/KateHoey/petitions/-KAejC_L4BNJI5hprnYH" + '/comments');
+    var refCom = new Firebase("https://politify.firebaseio.com/MPs/DavidCameron/petitions/-KAoJLbd0RJ6WveROcof" + '/comments');
     var comments = $firebaseArray(refCom);
     // var myData = {
     //   name: myGift,
@@ -115,7 +115,7 @@ politify.controller('SuccessController',
 
   self.upvote = function() {
     self.score = '';
-    var ref = new Firebase('https://politify.firebaseio.com/MPs/KateHoey/petitions/-KAg8p_MHtCSBZ_LrcRK');
+    var ref = new Firebase('https://politify.firebaseio.com/MPs/DavidCameron/petitions/-KAoJB8Gh8gCJFvay8qE');
     ref.on("value", function(snapshot) {
       self.score = (snapshot.val().score);
     });
@@ -125,7 +125,7 @@ politify.controller('SuccessController',
       "score": self.score
     });
     self.makeDbCall();
-    
+
   };
 
 
