@@ -7,6 +7,7 @@
   <div>
     <form class="formgroup" name="myform" novalidate>
       <input type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase" ng-required="true">
+      <br>
       <button class="btn" ng-disabled="myform.$invalid" ng-click="successCtrl.doSearch()">Search</button>
     </form>
   </div>

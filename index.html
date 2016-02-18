@@ -53,7 +53,9 @@
         <li><a ng-hide="currentUser" ng-href="#/register">Register</a></li>
         <li><a ng-show="currentUser"ng-href="#/account">My Account</a></li>
         <li><a ng-show="currentUser"ng-href="#/success">Search</a></li>
+        <div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
         <li><a ng-show="currentUser" ng-href="#/login" ng-click="logout()">Logout</a>
+        </div>
         <li class="sbar">
           <div ng-show="successCtrl.mpDetails">
             <form class="sform" name="myform" novalidate>
