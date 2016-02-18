@@ -113,6 +113,21 @@ politify.controller('SuccessController',
 
   };
 
+  self.upvote = function() {
+    self.score = '';
+    var ref = new Firebase('https://politify.firebaseio.com/MPs/KateHoey/petitions/-KAg8p_MHtCSBZ_LrcRK');
+    ref.on("value", function(snapshot) {
+      self.score = (snapshot.val().score);
+    });
+    self.score = self.score + 1;
+    var newRef = ref.child("score");
+    ref.update({
+      "score": self.score
+    });
+    self.makeDbCall();
+    
+  };
+
 
   self.makeDbCall = function() {
     mpDbFactory.query(self.mpResults.given_name, self.mpResults.family_name)
