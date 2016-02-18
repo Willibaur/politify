@@ -18,14 +18,14 @@ politify.controller('SuccessController',
         .success(function(response) {
           self.mpResults = response;
           console.log(response);
-          // finds mp details based on constituency
+          //finds mp details based on constituency
 
           NewsSearch.query(self.mpResults.full_name)
           .success(function(response) {
-            self.newsResults = response.data;
+            self.newsResults = response;
             console.log(response);
           });
-          // // finds news about mp based on name
+          // finds news about mp based on name
 
           Votes.query(self.mpResults.person_id)
           .success(function(response){
@@ -84,7 +84,7 @@ politify.controller('SuccessController',
     self.makeDbCall();
   };
 
-  $scope.showLove = function(myCheckin) {
+  self.showLove = function(myCheckin) {
     myCheckin.show = !myCheckin.show;
 
     if (myCheckin.userState == 'expanded') {
@@ -96,6 +96,10 @@ politify.controller('SuccessController',
   };
 
   $scope.giveLove = function(myCheckin, myGift) {
+    var mpname = ''; //needs to store the name of current searched mp
+    var hash = ''; //needs to store the hash for the current issue
+    //url = https://politify.firebaseio.com/MPs/ + mpname + '/' + hash
+
     var refCom = new Firebase("https://politify.firebaseio.com/MPs/KateHoey/petitions/-KAejC_L4BNJI5hprnYH" + '/comments');
     var comments = $firebaseArray(refCom);
     // var myData = {
@@ -108,6 +112,7 @@ politify.controller('SuccessController',
     });
 
   };
+
 
   self.makeDbCall = function() {
     mpDbFactory.query(self.mpResults.given_name, self.mpResults.family_name)
