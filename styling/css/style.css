@@ -477,6 +477,7 @@ nav {
 }
 
 .branding a {
+  font-family: Satisfy, cursive;
   width: 80%;
   font-size: 1.6em;
   text-align: left;
