@@ -27,6 +27,10 @@ time, mark, audio, video {
   font-size: 100%;
   vertical-align: baseline; }
 
+input {
+  text-align: center;
+}
+
 html {
   line-height: 1; }
 
@@ -473,6 +477,7 @@ nav {
 }
 
 .branding a {
+  font-family: Satisfy, cursive;
   width: 80%;
   font-size: 1.6em;
   text-align: left;
@@ -677,4 +682,8 @@ input.ng-valid.ng-touched {
  .info {
    text-align: justify;
    padding-left: 42%;
+ }
+
+ .twitter {
+   margin-left: 17%;
  }

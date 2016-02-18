@@ -1,9 +1,9 @@
 politify.controller('SuccessController',
                     ['$scope', '$http', 'MpSearch',
                       'NewsSearch', 'Votes', 'ResultsFactory',
-                      'mpDbFactory','Issues',
+                      'mpDbFactory', 'Issues','$rootScope', '$firebaseAuth', '$firebaseArray',
                       function ($scope, $http, MpSearch, NewsSearch, Votes,
-                                ResultsFactory, mpDbFactory, Issues) {
+                                ResultsFactory, mpDbFactory, Issues, $rootScope, $firebaseAuth, $firebaseArray) {
   var self = this;
   self.postcode = self.postcode || '';
   self.validate = false;
@@ -18,14 +18,14 @@ politify.controller('SuccessController',
         .success(function(response) {
           self.mpResults = response;
           console.log(response);
-          // finds mp details based on constituency
+          //finds mp details based on constituency
 
-          NewsSearch.query(self.mpResults.full_name)
-          .success(function(response) {
-            self.newsResults = response.data;
-            console.log(response);
-          });
-          // // finds news about mp based on name
+          // NewsSearch.query(self.mpResults.full_name)
+          // .success(function(response) {
+          //   self.newsResults = response;
+          //   console.log(response);
+          // });
+          // finds news about mp based on name
 
           Votes.query(self.mpResults.person_id)
           .success(function(response){
@@ -84,6 +84,51 @@ politify.controller('SuccessController',
     self.makeDbCall();
   };
 
+  self.showLove = function(myCheckin) {
+    myCheckin.show = !myCheckin.show;
+
+    if (myCheckin.userState == 'expanded') {
+      myCheckin.userState = '';
+
+    } else {
+      myCheckin.userState = 'expanded';
+    }
+  };
+
+  $scope.giveLove = function(myCheckin, myGift) {
+    var mpname = ''; //needs to store the name of current searched mp
+    var hash = ''; //needs to store the hash for the current issue
+    //url = https://politify.firebaseio.com/MPs/ + mpname + '/' + hash
+
+    var refCom = new Firebase("https://politify.firebaseio.com/MPs/KateHoey/petitions/-KAejC_L4BNJI5hprnYH" + '/comments');
+    var comments = $firebaseArray(refCom);
+    // var myData = {
+    //   name: myGift,
+    //   date: Firebase.ServerValue.TIMESTAMP
+    // };
+    comments.$add({
+      name: myGift,
+      author: $rootScope.currentUser
+    });
+
+  };
+
+  self.upvote = function() {
+    self.score = '';
+    var ref = new Firebase('https://politify.firebaseio.com/MPs/KateHoey/petitions/-KAg8p_MHtCSBZ_LrcRK');
+    ref.on("value", function(snapshot) {
+      self.score = (snapshot.val().score);
+    });
+    self.score = self.score + 1;
+    var newRef = ref.child("score");
+    ref.update({
+      "score": self.score
+    });
+    self.makeDbCall();
+
+  };
+
+
   self.makeDbCall = function() {
     mpDbFactory.query(self.mpResults.given_name, self.mpResults.family_name)
     .then(function(result) {
@@ -106,5 +151,11 @@ politify.controller('SuccessController',
         console.log("Twitter timeline added");
     });
   };
+
+  self.sendEmail = function(email, subject, body){
+        console.log('aljalfd');
+        var link = "mailto:"+ email;
+        window.location.href = link;
+     };
 
 }]);
