@@ -21,17 +21,15 @@
     <li btn-listng-class="{ active: tab.isSet(1) }">
       <a class="btn-tab" href ng-click="tab.setTab(1)">Basic Info</a></li>
     <li ng-class="{ active: tab.isSet(2) }">
-      <a class="btn-tab" href ng-click="tab.setTab(2)">Expenses</a></li>
+      <a class="btn-tab" href ng-click="tab.setTab(2)">Email</a></li>
     <li ng-class="{ active: tab.isSet(3) }">
-      <a class="btn-tab" href ng-click="tab.setTab(3)">Email</a></li>
+      <a class="btn-tab" href ng-click="tab.setTab(3)">News</a></li>
     <li ng-class="{ active: tab.isSet(4) }">
-      <a class="btn-tab" href ng-click="tab.setTab(4)">News</a></li>
+      <a class="btn-tab" href ng-click="tab.setTab(4)">Financial Info</a></li>
     <li ng-class="{ active: tab.isSet(5) }">
-      <a class="btn-tab" href ng-click="tab.setTab(5)">Financial Info</a></li>
+      <a class="btn-tab" href ng-click="tab.setTab(5)">Social</a></li>
     <li ng-class="{ active: tab.isSet(6) }">
-      <a class="btn-tab" href ng-click="tab.setTab(6)">Social</a></li>
-    <li ng-class="{ active: tab.isSet(7) }">
-      <a class="btn-tab" href ng-click="tab.setTab(7)">Issues</a></li>
+      <a class="btn-tab" href ng-click="tab.setTab(6)">Issues</a></li>
   </ul>
   <br>
 
@@ -51,14 +49,6 @@
   </div>
 
   <div ng-show="tab.isSet(2)">
-    <h2>Expenses</h2>
-    <br>
-    <a class="web-link" ng-href="{{ successCtrl.votes.expenses_url }}">Expenses Record</a>
-    <p>Total expenses:</p>
-    <p>{{ successCtrl.votes.expenses2009_total | currency:"£" }}</p>
-  </div>
-  <div ng-show="tab.isSet(3)">
-
     <h2>Email</h2>
     <p>Email {{ successCtrl.mpResults.full_name }}</p>
     <form method="post" name="form" role="form" ng-model="successCtrl" ng-submit="form.$valid && sendMessage(input)" novalidate>
@@ -83,7 +73,7 @@
       <button class="btn" type="submit" name="submit" value="submit">Send</button>
     </form>
   </div>
-  <div ng-show="tab.isSet(4)">
+  <div ng-show="tab.isSet(3)">
     <h2>News</h2>
     <br>
     <ul class="news">
@@ -92,17 +82,23 @@
       </p>
     </ul>
   </div>
-  <div ng-show="tab.isSet(5)">
+  <div ng-show="tab.isSet(4)">
     <h2>Financial Info</h2>
     <br>
     <div ng-model="successCtrl">
     <p> {{ successCtrl.mpResults.full_name }}'s finacial interests</p>
     <br>
       <div ng-bind-html="successCtrl.votes.register_member_interests_html | sanitize"></div>
+      <br>
+      <h2>Expenses</h2>
+      <br>
+      <a class="web-link" ng-href="{{ successCtrl.votes.expenses_url }}">Expenses Record</a>
+      <p>Total expenses:</p>
+      <p>{{ successCtrl.votes.expenses2009_total | currency:"£" }}</p>
     </div>
   </div>
   <br>
-  <div ng-show="tab.isSet(6)">
+  <div ng-show="tab.isSet(5)">
     <h2>Social</h2>
     <p ng-show="successCtrl.mpTwitterHandle">Why not follow @<span data-ng-bind="successCtrl.mpTwitterHandle"></span>?</p>
     <br>
@@ -111,7 +107,7 @@
     <div class="twitter" id="timeline">
     </div>
   </div>
-  <div ng-show="tab.isSet(7)">
+  <div ng-show="tab.isSet(6)">
     <h2>Raised Issues</h2>
     <br>
     <div ng-repeat="comm in successCtrl.mpDetails.petitions">
@@ -140,7 +136,6 @@
 
     <br>
     <h2>Raise and issue</h1>
-    
 
     <form name="myform">
       <textarea ng-model="successCtrl.issue" type="text" name="issues" ng-required="true"></textarea>
