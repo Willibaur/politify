@@ -1,6 +1,7 @@
 
 <div class="card">
   <fieldset>
+    <div ng-hide="successCtrl.mpDetails">
   <h1 id="app-Name">Search For Your MP</h1
     <p>Enter Postcode</p>
   <div>
@@ -8,9 +9,7 @@
       <input type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase" ng-required="true">
       <button class="btn" ng-disabled="myform.$invalid" ng-click="successCtrl.doSearch()">Search</button>
     </form>
-
-
-
+  </div>
   </div>
   <br><br>
   <div class="all-results" ng-show="successCtrl.validate && successCtrl.postcode">

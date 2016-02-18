@@ -479,7 +479,7 @@ nav {
 .branding a {
   font-family: Satisfy, cursive;
   width: 80%;
-  font-size: 1.6em;
+  font-size: 1.8em;
   text-align: left;
   color: #1B7998;
   text-decoration: none;
@@ -525,6 +525,10 @@ nav ul li a {
 nav li a:hover {
   color: #E76C5A;
 }
+
+
+
+
 
 .userinfo {
   text-align: center;
@@ -686,4 +690,9 @@ input.ng-valid.ng-touched {
 
  .twitter {
    margin-left: 17%;
+ }
+
+ .sbar {
+   margin-right: 45%;
+   display: inline-block;
  }

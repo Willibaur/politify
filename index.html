@@ -53,7 +53,15 @@
         <li><a ng-hide="currentUser" ng-href="#/register">Register</a></li>
         <li><a ng-show="currentUser"ng-href="#/account">My Account</a></li>
         <li><a ng-show="currentUser"ng-href="#/success">Search</a></li>
+        <li class="sbar"><div ng-show="successCtrl.mpDetails">
+          <form class="navform" name="myform" novalidate>
+            <input class="sinput" type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase" ng-required="true">
+            <button class="btn-small" ng-disabled="myform.$invalid" ng-click="successCtrl.doSearch()">Search</button>
+          </form>
+        </div>
+      </li>
       </ul>
+
     </nav>
     </header>
 
