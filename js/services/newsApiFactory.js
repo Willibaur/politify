@@ -7,7 +7,7 @@ politify.factory('NewsSearch', ['$http', function($http) {
 
     query: function(mpname) {
       return $http.jsonp(
-        queryUrl + key + "mp" + mpname + cx + "&callback=JSON_CALLBACK"
+        queryUrl + key + mpname + "mp" + cx + "&callback=JSON_CALLBACK"
       );
     }
   };

@@ -4,9 +4,9 @@
   <h1 id="app-Name">Search For Your MP</h1
     <p>Enter Postcode</p>
   <div>
-    <form class="form-horizontal">
-      <input type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase">
-      <button class="btn" ng-click="successCtrl.doSearch()">Search</button>
+    <form class="formgroup" name="myform" novalidate>
+      <input type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase" ng-required="true">
+      <button class="btn" ng-disabled="myform.$invalid" ng-click="successCtrl.doSearch()">Search</button>
     </form>
 
 
@@ -108,14 +108,34 @@
     <br>
     <p ng-hide="successCtrl.mpTwitterHandle">This MP isn't on twitter</p>
     <br>
-    <div id="timeline">
+    <div class="twitter" id="timeline">
     </div>
   </div>
   <div ng-show="tab.isSet(7)">
     <h2>Raised Issues</h2>
-    <div ng-repeat="petition in successCtrl.mpDetails.petitions">
-      <p>{{petition.issue}}</p>
+
+    <div ng-repeat="comm in successCtrl.mpDetails.petitions">
+
     </div>
+
+    <div ng-class="checkin.userState" ng-repeat="petition in successCtrl.mpDetails.petitions">
+      <p>{{petition.issue}}</p>
+      <button class="btn btn-list tooltip" ng-click="showLove(petition)"><span>Comment</span></button>
+      <button class="btn btn-love tooltip" ng-click="successCtrl.upvote()"><span>Like</span></button>
+      {{petition.score}}
+
+      <div class="showcheckins" ng-show="petition.show"> <!-- comment form -->
+        <form class="cf" ng-submit="giveLove(petition, checkin.giftText)" novalidate>
+          <input type="text" name="giftText" placeholder="What you saying" ng-model="checkin.giftText">
+          <button type="submit" class="btn-small">+</button>
+        </form>
+        <div ng-repeat="key in petition.comments">
+          {{key.name}}
+        </div>
+      </div> <!-- comment form closes -->
+
+    </div>
+
     <form name="myform">
       <textarea ng-model="successCtrl.issue" type="text" name="issues" ng-required="true"></textarea>
       <button ng-click="successCtrl.addIssue()" ng-disabled="myform.$invalid">Raise issue</button>
