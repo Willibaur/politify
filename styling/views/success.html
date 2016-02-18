@@ -14,17 +14,19 @@
   </div>
   <div class="all-results" ng-show="successCtrl.validate && successCtrl.postcode">
     <div class="binfo">
-    <h2>Basic Info</h2>
-    <br>
-    <div class="info" >
-      <p>Name: {{successCtrl.mpResults.full_name}}</p>
-      <p>Party: {{successCtrl.mpResults.party}}</p>
-      <p id="constituency">Constituency: {{successCtrl.mpResults.constituency}}</p>
-      <p>{{successCtrl.mpResults.office[0].dept}}</p>
-      <p><a target="_blank" class="web-link" ng-href="{{ successCtrl.votes.mp_website }}">Website</a></p>
-      <p><a target="_blank" class="web-link" ng-href="http://www.theyworkforyou.com/mp/{{successCtrl.mpResults.person_id}}/{{successCtrl.mp_link_name}}/{{successCtrl.mpConstituency}}/votes">See how {{successCtrl.mpResults.full_name}} votes</a></p>
-    </div>
-      <p><img ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available" height="100px" width="100px"></img></p>
+      <h2>Basic Info</h2>
+      <br>
+      <div class="profilepicspace">
+      </div>
+      <div class="info" >
+        <img id="profilepicture" ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available"></img>
+        <p>Name: {{successCtrl.mpResults.full_name}}</p>
+        <p>Party: {{successCtrl.mpResults.party}}</p>
+        <p id="constituency">Constituency: {{successCtrl.mpResults.constituency}}</p>
+        <p>{{successCtrl.mpResults.office[0].dept}}</p>
+        <p><a target="_blank" class="web-link" ng-href="{{ successCtrl.votes.mp_website }}">Website</a></p>
+        <p><a target="_blank" class="web-link" ng-href="http://www.theyworkforyou.com/mp/{{successCtrl.mpResults.person_id}}/{{successCtrl.mp_link_name}}/{{successCtrl.mpConstituency}}/votes">See how {{successCtrl.mpResults.full_name}} votes</a></p>
+      </div>
     </div>
 
     <br>
@@ -111,11 +113,11 @@
 
     </div>
 
-    <div ng-class="checkin.userState" ng-repeat="petition in successCtrl.mpDetails.petitions">
+    <div class="issues" ng-class="checkin.userState" ng-repeat="petition in successCtrl.mpDetails.petitions">
       <p>{{petition.issue}}</p>
       <button class="btn btn-list tooltip" ng-click="successCtrl.showLove(petition)"><span>Comments</span></button>
       <button class="btn btn-love tooltip" ng-click="successCtrl.upvote()"><span>Like</span></button>
-      {{petition.score}}
+      <span class="btn" id="likes">{{petition.score}}</span>
 
 
       <div class="showcheckins" ng-show="petition.show"> <!-- comment form -->
@@ -128,6 +130,8 @@
         </div>
         <br><br>
       </div> <!-- comment form closes -->
+
+      <div class="shortline"></div>
 
     </div>
 
