@@ -35,18 +35,18 @@
   </ul>
   <br>
 
-  <div ng-show="tab.isSet(1)">
+  <div class="profile" ng-show="tab.isSet(1)">
     <h2>Basic Info</h2>
     <br>
-    <div class="info">
+    <div class="info" >
       <p>Name: {{successCtrl.mpResults.full_name}}</p>
       <p>Party: {{successCtrl.mpResults.party}}</p>
       <p id="constituency">Constituency: {{successCtrl.mpResults.constituency}}</p>
       <p>{{successCtrl.mpResults.office[0].dept}}</p>
-      </div>
-      <p><img ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available" height="100px" width="100px"></img></p>
       <p><a target="_blank" class="web-link" ng-href="{{ successCtrl.votes.mp_website }}">Website</a></p>
       <p><a target="_blank" class="web-link" ng-href="http://www.theyworkforyou.com/mp/{{successCtrl.mpResults.person_id}}/{{successCtrl.mp_link_name}}/{{successCtrl.mpConstituency}}/votes">See how {{successCtrl.mpResults.full_name}} votes</a></p>
+    </div>
+      <p><img ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available" height="100px" width="100px"></img></p>
 
   </div>
 
