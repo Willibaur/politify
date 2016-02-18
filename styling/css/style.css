@@ -263,6 +263,24 @@ input[type=radio] {
 
 }
 
+.btn-small {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 2px;
+  font-size: 30;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 2px;
+  background: #C61C6F;
+  background-color: #2D8BCF;
+  color: white;
+  background-size: 3px 3px;
+  display: none;
+}
+
 .btn .btn-left { float: left; }
 .btn .btn-right { float: right; }
 .btn:hover { background-color: #DC322F; }
@@ -485,7 +503,7 @@ nav {
 .branding a {
   font-family: Satisfy, cursive;
   width: 80%;
-  font-size: 1.6em;
+  font-size: 1.8em;
   text-align: left;
   color: #1B7998;
   text-decoration: none;
@@ -531,6 +549,16 @@ nav ul li a {
 nav li a:hover {
   color: #E76C5A;
 }
+
+.sbar {
+  height: 100%;
+  margin-right: 39%;
+  text-align: center;
+
+}
+
+
+
 
 .userinfo {
   text-align: center;

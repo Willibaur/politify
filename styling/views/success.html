@@ -1,6 +1,7 @@
 
 <div class="card">
   <fieldset>
+    <div ng-hide="successCtrl.mpDetails">
   <h1 id="app-Name">Search For Your MP</h1
     <p>Enter Postcode</p>
   <div>
@@ -8,32 +9,10 @@
       <input type="text" ng-model="successCtrl.postcode" style="text-transform:uppercase" ng-required="true">
       <button class="btn" ng-disabled="myform.$invalid" ng-click="successCtrl.doSearch()">Search</button>
     </form>
-
-
-
   </div>
-  <br><br>
+  </div>
   <div class="all-results" ng-show="successCtrl.validate && successCtrl.postcode">
-
-
-  <section class="tab" ng-controller="TabController as tab">
-  <ul class="nav nav-pills">
-    <li btn-listng-class="{ active: tab.isSet(1) }">
-      <a class="btn-tab" href ng-click="tab.setTab(1)">Basic Info</a></li>
-    <li ng-class="{ active: tab.isSet(2) }">
-      <a class="btn-tab" href ng-click="tab.setTab(2)">Email</a></li>
-    <li ng-class="{ active: tab.isSet(3) }">
-      <a class="btn-tab" href ng-click="tab.setTab(3)">News</a></li>
-    <li ng-class="{ active: tab.isSet(4) }">
-      <a class="btn-tab" href ng-click="tab.setTab(4)">Financial Info</a></li>
-    <li ng-class="{ active: tab.isSet(5) }">
-      <a class="btn-tab" href ng-click="tab.setTab(5)">Social</a></li>
-    <li ng-class="{ active: tab.isSet(6) }">
-      <a class="btn-tab" href ng-click="tab.setTab(6)">Issues</a></li>
-  </ul>
-  <br>
-
-  <div class="profile" ng-show="tab.isSet(1)">
+    <div class="binfo">
     <h2>Basic Info</h2>
     <br>
     <div class="info" >
@@ -45,10 +24,27 @@
       <p><a target="_blank" class="web-link" ng-href="http://www.theyworkforyou.com/mp/{{successCtrl.mpResults.person_id}}/{{successCtrl.mp_link_name}}/{{successCtrl.mpConstituency}}/votes">See how {{successCtrl.mpResults.full_name}} votes</a></p>
     </div>
       <p><img ng-src="http://www.theyworkforyou.com/{{successCtrl.mpResults.image}}" alt="No Image available" height="100px" width="100px"></img></p>
+    </div>
 
-  </div>
+    <br>
 
-  <div ng-show="tab.isSet(2)">
+  <section class="tab" ng-controller="TabController as tab">
+  <ul class="nav nav-pills">
+    <li ng-class="{ active: tab.isSet(1) }">
+      <a class="btn-tab" href ng-click="tab.setTab(1)">Email</a></li>
+    <li ng-class="{ active: tab.isSet(2) }">
+      <a class="btn-tab" href ng-click="tab.setTab(2)">News</a></li>
+    <li ng-class="{ active: tab.isSet(3) }">
+      <a class="btn-tab" href ng-click="tab.setTab(3)">Financial Info</a></li>
+    <li ng-class="{ active: tab.isSet(4) }">
+      <a class="btn-tab" href ng-click="tab.setTab(4)">Social</a></li>
+    <li ng-class="{ active: tab.isSet(5) }">
+      <a class="btn-tab" href ng-click="tab.setTab(5)">Issues</a></li>
+  </ul>
+  <br>
+
+
+  <div ng-show="tab.isSet(1)">
     <h2>Email</h2>
     <p>Email {{ successCtrl.mpResults.full_name }}</p>
     <form method="post" name="form" role="form" ng-model="successCtrl" ng-submit="form.$valid && sendMessage(input)" novalidate>
@@ -73,7 +69,7 @@
       <button class="btn" type="submit" name="submit" value="submit">Send</button>
     </form>
   </div>
-  <div ng-show="tab.isSet(3)">
+  <div ng-show="tab.isSet(2)">
     <h2>News</h2>
     <br>
     <ul class="news">
@@ -82,7 +78,7 @@
       </p>
     </ul>
   </div>
-  <div ng-show="tab.isSet(4)">
+  <div ng-show="tab.isSet(3)">
     <h2>Financial Info</h2>
     <br>
     <div ng-model="successCtrl">
@@ -98,7 +94,7 @@
     </div>
   </div>
   <br>
-  <div ng-show="tab.isSet(5)">
+  <div ng-show="tab.isSet(4)">
     <h2>Social</h2>
     <p ng-show="successCtrl.mpTwitterHandle">Why not follow @<span data-ng-bind="successCtrl.mpTwitterHandle"></span>?</p>
     <br>
@@ -107,7 +103,7 @@
     <div class="twitter" id="timeline">
     </div>
   </div>
-  <div ng-show="tab.isSet(6)">
+  <div ng-show="tab.isSet(5)">
     <h2>Raised Issues</h2>
     <br>
     <div ng-repeat="comm in successCtrl.mpDetails.petitions">
