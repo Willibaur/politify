@@ -257,6 +257,24 @@ input[type=radio] {
 
 }
 
+.btn-small {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 2px;
+  font-size: 30;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 2px;
+  background: #C61C6F;
+  background-color: #2D8BCF;
+  color: white;
+  background-size: 3px 3px;
+  display: none;
+}
+
 .btn .btn-left { float: left; }
 .btn .btn-right { float: right; }
 .btn:hover { background-color: #DC322F; }
@@ -526,6 +544,12 @@ nav li a:hover {
   color: #E76C5A;
 }
 
+.sbar {
+  height: 100%;
+  margin-right: 39%;
+  text-align: center;
+
+}
 
 
 
@@ -690,9 +714,4 @@ input.ng-valid.ng-touched {
 
  .twitter {
    margin-left: 17%;
- }
-
- .sbar {
-   margin-right: 45%;
-   display: inline-block;
  }
