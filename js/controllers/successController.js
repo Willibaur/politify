@@ -125,7 +125,7 @@ politify.controller('SuccessController',
       "score": self.score
     });
     self.makeDbCall();
-    
+
   };
 
 
@@ -151,5 +151,11 @@ politify.controller('SuccessController',
         console.log("Twitter timeline added");
     });
   };
+
+  self.sendEmail = function(email, subject, body){
+        console.log('aljalfd');
+        var link = "mailto:"+ email;
+        window.location.href = link;
+     };
 
 }]);

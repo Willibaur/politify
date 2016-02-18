@@ -21,7 +21,7 @@
     <li btn-listng-class="{ active: tab.isSet(1) }">
       <a class="btn-tab" href ng-click="tab.setTab(1)">Basic Info</a></li>
     <li ng-class="{ active: tab.isSet(2) }">
-      <a class="btn-tab" href ng-click="tab.setTab(2)">Email</a></li>
+      <a class="btn-tab" href ng-click="successCtrl.sendEmail(successCtrl.mpDetails.parliamentemail)">Email</a></li>
     <li ng-class="{ active: tab.isSet(3) }">
       <a class="btn-tab" href ng-click="tab.setTab(3)">News</a></li>
     <li ng-class="{ active: tab.isSet(4) }">
@@ -48,31 +48,9 @@
 
   </div>
 
-  <div ng-show="tab.isSet(2)">
-    <h2>Email</h2>
-    <p>Email {{ successCtrl.mpResults.full_name }}</p>
-    <form method="post" name="form" role="form" ng-model="successCtrl" ng-submit="form.$valid && sendMessage(input)" novalidate>
-      <p ng-show="success">Thanks for getting in touch!</p>
-      <p ng-show="error">Something wrong happened!, please try again.</p>
-
-      <fieldset>
-        <div>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" ng-model="input.name" required>
-        </div>
-        <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" ng-model="input.email" required>
-        </div>
-        <div>
-          <label for="messsage">Message:</label>
-          <textarea id="messsage" name="message" ng-model="input.message" required></textarea>
-        </div>
-
-      </fieldset>
-      <button class="btn" type="submit" name="submit" value="submit">Send</button>
-    </form>
+  <div ng-show="tab.isSet(2)" >
   </div>
+
   <div ng-show="tab.isSet(3)">
     <h2>News</h2>
     <br>
