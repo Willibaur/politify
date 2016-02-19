@@ -121,13 +121,12 @@ politify.controller('SuccessController',
     ref.on("value", function(snapshot) {
       self.score = (snapshot.val().score);
     });
-    self.score = self.score + 1;
+    self.score ++;
     var newRef = ref.child("score");
     ref.update({
       "score": self.score
     });
     self.makeDbCall();
-
   };
 
 

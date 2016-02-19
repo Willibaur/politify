@@ -56,7 +56,7 @@
         <li><a ng-show="currentUser" ng-controller="RegistrationController" ng-href="#/login" ng-click="logout()">Logout</a>
         <li ng-show="successCtrl.mpResults">
           <form class="sform" name="myform" novalidate>
-              <input class="sinput" type="text" ng-model="successCtrl.postcode" ng-required="true" placeholder="Search">
+              <input class="sinput" type="text" ng-model="successCtrl.postcode" ng-required="true" placeholder="Search...">
               <button class="btn-small" ng-disabled="myform.$invalid" ng-click="successCtrl.doSearch()">Search</button>
           </form>
         </li>
