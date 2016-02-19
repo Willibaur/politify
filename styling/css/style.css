@@ -556,8 +556,7 @@ nav li a:hover {
 
 .sbar {
   height: 100%;
-  margin-right: 39%;
-  text-align: center;
+  margin-right: 45%;
 
 }
 
@@ -760,3 +759,18 @@ input.ng-valid.ng-touched {
   padding: 0.5% 0.2%;
   line-height: normal;
  }
+
+ .news {
+   white-space: pre-line;
+}
+
+.news_items  {
+  /*border-bottom: solid;
+  border-color: grey;*/
+  list-style:disc outside none;
+  display:list-item;
+}
+
+.rank {
+  white-space: nowrap;
+}
