@@ -31,4 +31,6 @@ We wanted to create a solution that would encourage voters to remain informed an
 ### Contributors
 Gareth McKenna, Jonathan Gardiner, Kirk Smith, Tristan Crossley, William Bautista
 
+Also, thanks to Pete Taylor, @kimondo on Twitter for providing us with a spreadsheet of MP details.
+
 [![Stories in Ready](https://badge.waffle.io/trcrossley/politify.png?label=ready&title=Ready)](https://waffle.io/trcrossley/politify)
